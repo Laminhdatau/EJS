@@ -12,6 +12,11 @@ app.get("/", (req, res) => {
   res.render("home.ejs");
 });
 
+app.get("/random", (req, res) => {
+  const num = Math.floor(Math.random() * 10) + 1;
+  res.render("random", { random:num });
+});
+
 app.listen(8080, () => {
   console.log("Express berjalan di port http://localhost:8080");
 });
