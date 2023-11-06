@@ -15,8 +15,21 @@ app.get("/", (req, res) => {
 // TAG
 app.get("/t/:tag", (req, res) => {
   const { tag } = req.params;
+  const data = tagsData[tag];
 
-  res.render("tag", { tag });
+  if (data) {
+    res.render("tag", { data });
+  } else {
+    res.render("notfound", { tag });
+  }
+
+  // res.render("tag", { tag });
+});
+
+app.get("/kucing", (req, res) => {
+  const kucing = ["marno", "fikri", "mew"];
+
+  res.render("kucing", { kucing });
 });
 
 app.get("/random", (req, res) => {
